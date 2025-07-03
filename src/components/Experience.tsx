@@ -1,0 +1,112 @@
+import React from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Briefcase } from "lucide-react";
+
+interface ExperienceProps {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  technologies: string[];
+  current?: boolean;
+}
+
+const experiences: ExperienceProps[] = [
+  {
+    title: "Senior Full Stack Developer",
+    company: "TechCorp Solutions",
+    period: "2023 - Present",
+    description: "Lead development of enterprise web applications, mentor junior developers, and architect scalable solutions. Improved application performance by 40% and reduced deployment time by 60%.",
+    technologies: ["React", "TypeScript", "Node.js", "AWS", "PostgreSQL"],
+    current: true
+  },
+  {
+    title: "Full Stack Developer",
+    company: "StartupXYZ",
+    period: "2022 - 2023",
+    description: "Developed and maintained multiple client-facing applications, implemented CI/CD pipelines, and collaborated with design teams to create responsive user interfaces.",
+    technologies: ["Vue.js", "Python", "Django", "Docker", "MongoDB"]
+  },
+  {
+    title: "Frontend Developer",
+    company: "Digital Agency Pro",
+    period: "2021 - 2022",
+    description: "Built responsive websites and web applications for various clients, optimized for performance and accessibility. Worked closely with designers and backend developers.",
+    technologies: ["React", "JavaScript", "Tailwind CSS", "Firebase"]
+  },
+  {
+    title: "Junior Web Developer",
+    company: "WebDev Studio",
+    period: "2020 - 2021",
+    description: "Started my professional journey developing small to medium-scale websites, learning best practices, and contributing to team projects under senior developer guidance.",
+    technologies: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"]
+  }
+];
+
+const ExperienceCard = ({ title, company, period, description, technologies, current }: ExperienceProps) => {
+  return (
+    <Card className="relative">
+      <CardHeader>
+        <div className="flex items-start gap-3">
+          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-lg">
+            <Briefcase className="w-5 h-5 text-primary" />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <CardTitle className="text-lg">{title}</CardTitle>
+              {current && (
+                <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                  Current
+                </span>
+              )}
+            </div>
+            <CardDescription className="text-sm font-medium text-primary">
+              {company} • {period}
+            </CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <p className="text-muted-foreground mb-4">{description}</p>
+        <div className="flex flex-wrap gap-2">
+          {technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+const Experience = () => {
+  return (
+    <section id="experience" className="section-container bg-background">
+      <div className="opacity-0 animate-on-scroll">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="pulse-chip">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground mr-2">04</span>
+            <span>Experience</span>
+          </div>
+        </div>
+        
+        <h2 className="section-title mb-4">Work Experience</h2>
+        <p className="section-subtitle mb-12">
+          My professional journey in software development, building solutions and growing with amazing teams.
+        </p>
+        
+        <div className="space-y-6">
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={index} {...experience} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
