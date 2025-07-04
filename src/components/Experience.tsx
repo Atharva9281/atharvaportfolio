@@ -45,52 +45,57 @@ const experiences: ExperienceProps[] = [
 
 const ExperienceCard = ({ title, company, period, description, technologies, current, isLeft }: ExperienceProps & { isLeft: boolean }) => {
   return (
-    <div className={`flex items-center w-full ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
-      {/* Timeline dot */}
-      <div className="flex items-center justify-center w-4 h-4 bg-primary rounded-full border-4 border-background shadow-sm z-10 mx-4">
+    <div className={`flex items-center w-full ${isLeft ? 'flex-row-reverse' : 'flex-row'} group`}>
+      {/* Timeline dot with glow effect */}
+      <div className="relative z-10 mx-8">
+        <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-primary to-primary/80 rounded-full shadow-lg border-4 border-background group-hover:scale-110 transition-all duration-300">
+          <div className="w-2 h-2 bg-white rounded-full"></div>
+        </div>
+        <div className="absolute inset-0 bg-primary/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 scale-150"></div>
       </div>
       
-      {/* Card */}
-      <div className={`w-full max-w-md ${isLeft ? 'text-right' : 'text-left'}`}>
-        <Card className="relative hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-          <CardHeader>
-            <div className={`flex items-start gap-3 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
-              <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-lg">
-                <Briefcase className="w-5 h-5 text-primary" />
+      {/* Card with enhanced styling */}
+      <div className={`w-full max-w-lg ${isLeft ? 'text-right' : 'text-left'}`}>
+        <div className="glass-card hover-lift group-hover:shadow-elegant-hover transition-all duration-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+          <div className="relative p-6">
+            <div className={`flex items-start gap-4 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/10">
+                <Briefcase className="w-6 h-6 text-primary" />
               </div>
               <div className="flex-1">
-                <div className={`flex items-center gap-2 mb-1 ${isLeft ? 'justify-end' : 'justify-start'}`}>
-                  <CardTitle className="text-lg">{title}</CardTitle>
+                <div className={`flex items-center gap-3 mb-2 ${isLeft ? 'justify-end' : 'justify-start'}`}>
+                  <h3 className="text-xl font-semibold text-foreground">{title}</h3>
                   {current && (
-                    <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                    <span className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-primary to-primary/80 text-white rounded-full shadow-sm">
                       Current
                     </span>
                   )}
                 </div>
-                <CardDescription className="text-sm font-medium text-primary">
+                <div className="text-primary font-medium mb-3">
                   {company} • {period}
-                </CardDescription>
+                </div>
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-4">{description}</p>
+            
+            <p className="text-muted-foreground leading-relaxed mb-4">{description}</p>
+            
             <div className={`flex flex-wrap gap-2 ${isLeft ? 'justify-end' : 'justify-start'}`}>
               {technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md"
+                  className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-muted-foreground/10 hover:bg-primary/10 hover:text-primary transition-colors duration-200"
                 >
                   {tech}
                 </span>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
       
       {/* Spacer for the other side */}
-      <div className="w-full max-w-md"></div>
+      <div className="w-full max-w-lg"></div>
     </div>
   );
 };
@@ -112,8 +117,9 @@ const Experience = () => {
         </p>
         
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-muted-foreground/20"></div>
+          {/* Enhanced timeline line with gradient */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-primary/20 rounded-full shadow-sm"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-white via-white/80 to-white/60 rounded-full"></div>
           
           <div className="space-y-12">
             {experiences.map((experience, index) => (
