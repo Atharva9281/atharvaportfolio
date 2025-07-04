@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Link, User } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -14,35 +14,35 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full">
+            <a href="mailto:your.email@example.com" className="flex items-start gap-4 group hover:bg-gray-50 p-3 rounded-lg transition-colors">
+              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full group-hover:bg-pulse-200 transition-colors">
                 <Mail className="w-6 h-6 text-pulse-500" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">Email</h3>
+                <h3 className="font-semibold text-lg mb-1 group-hover:text-pulse-600 transition-colors">Email</h3>
                 <p className="text-gray-600">your.email@example.com</p>
               </div>
-            </div>
+            </a>
             
-            <div className="flex items-start gap-4">
-              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full">
-                <Link className="w-6 h-6 text-pulse-500" />
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-gray-50 p-3 rounded-lg transition-colors">
+              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full group-hover:bg-pulse-200 transition-colors">
+                <Linkedin className="w-6 h-6 text-pulse-500" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">LinkedIn</h3>
+                <h3 className="font-semibold text-lg mb-1 group-hover:text-pulse-600 transition-colors">LinkedIn</h3>
                 <p className="text-gray-600">linkedin.com/in/yourprofile</p>
               </div>
-            </div>
+            </a>
             
-            <div className="flex items-start gap-4">
-              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full">
-                <User className="w-6 h-6 text-pulse-500" />
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group hover:bg-gray-50 p-3 rounded-lg transition-colors">
+              <div className="flex items-center justify-center w-12 h-12 bg-pulse-100 rounded-full group-hover:bg-pulse-200 transition-colors">
+                <Github className="w-6 h-6 text-pulse-500" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">GitHub</h3>
+                <h3 className="font-semibold text-lg mb-1 group-hover:text-pulse-600 transition-colors">GitHub</h3>
                 <p className="text-gray-600">github.com/yourusername</p>
               </div>
-            </div>
+            </a>
           </div>
 
           <form className="space-y-6">
