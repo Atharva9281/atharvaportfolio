@@ -45,57 +45,102 @@ const experiences: ExperienceProps[] = [
 
 const ExperienceCard = ({ title, company, period, description, technologies, current, isLeft }: ExperienceProps & { isLeft: boolean }) => {
   return (
-    <div className={`flex items-center w-full ${isLeft ? 'flex-row-reverse' : 'flex-row'} group`}>
-      {/* Timeline dot with glow effect */}
-      <div className="relative z-10 mx-8">
+    <div className="flex items-center w-full group">
+      {/* Left side content or spacer */}
+      <div className={`w-1/2 ${isLeft ? 'pr-12' : 'pr-8'} ${isLeft ? '' : 'opacity-0'}`}>
+        {isLeft && (
+          <div className="text-right">
+            <div className="glass-card hover-lift group-hover:shadow-elegant-hover transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="relative p-6">
+                <div className="flex items-start gap-4 flex-row-reverse">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/10">
+                    <Briefcase className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2 justify-end">
+                      <h3 className="text-xl font-semibold text-foreground">{title}</h3>
+                      {current && (
+                        <span className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-primary to-primary/80 text-white rounded-full shadow-sm">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-primary font-medium mb-3 text-right">
+                      {company} • {period}
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-muted-foreground leading-relaxed mb-4 text-right">{description}</p>
+                
+                <div className="flex flex-wrap gap-2 justify-end">
+                  {technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-muted-foreground/10 hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Timeline dot */}
+      <div className="relative z-10 flex-shrink-0">
         <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-primary to-primary/80 rounded-full shadow-lg border-4 border-background group-hover:scale-110 transition-all duration-300">
           <div className="w-2 h-2 bg-white rounded-full"></div>
         </div>
         <div className="absolute inset-0 bg-primary/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 scale-150"></div>
       </div>
-      
-      {/* Card with enhanced styling */}
-      <div className={`w-full max-w-lg ${isLeft ? 'text-right' : 'text-left'}`}>
-        <div className="glass-card hover-lift group-hover:shadow-elegant-hover transition-all duration-500">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-          <div className="relative p-6">
-            <div className={`flex items-start gap-4 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/10">
-                <Briefcase className="w-6 h-6 text-primary" />
-              </div>
-              <div className="flex-1">
-                <div className={`flex items-center gap-3 mb-2 ${isLeft ? 'justify-end' : 'justify-start'}`}>
-                  <h3 className="text-xl font-semibold text-foreground">{title}</h3>
-                  {current && (
-                    <span className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-primary to-primary/80 text-white rounded-full shadow-sm">
-                      Current
+
+      {/* Right side content or spacer */}
+      <div className={`w-1/2 ${!isLeft ? 'pl-12' : 'pl-8'} ${!isLeft ? '' : 'opacity-0'}`}>
+        {!isLeft && (
+          <div className="text-left">
+            <div className="glass-card hover-lift group-hover:shadow-elegant-hover transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="relative p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/10">
+                    <Briefcase className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-xl font-semibold text-foreground">{title}</h3>
+                      {current && (
+                        <span className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-primary to-primary/80 text-white rounded-full shadow-sm">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-primary font-medium mb-3">
+                      {company} • {period}
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-muted-foreground leading-relaxed mb-4">{description}</p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-muted-foreground/10 hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                    >
+                      {tech}
                     </span>
-                  )}
-                </div>
-                <div className="text-primary font-medium mb-3">
-                  {company} • {period}
+                  ))}
                 </div>
               </div>
-            </div>
-            
-            <p className="text-muted-foreground leading-relaxed mb-4">{description}</p>
-            
-            <div className={`flex flex-wrap gap-2 ${isLeft ? 'justify-end' : 'justify-start'}`}>
-              {technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-muted-foreground/10 hover:bg-primary/10 hover:text-primary transition-colors duration-200"
-                >
-                  {tech}
-                </span>
-              ))}
             </div>
           </div>
-        </div>
+        )}
       </div>
-      
-      {/* Spacer for the other side */}
-      <div className="w-full max-w-lg"></div>
     </div>
   );
 };
