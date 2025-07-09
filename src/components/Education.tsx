@@ -6,6 +6,7 @@ interface EducationProps {
   degree: string;
   institution: string;
   period: string;
+  cgpa: string;
   description: string;
   subjects: string[];
 }
@@ -15,6 +16,7 @@ const education: EducationProps[] = [
     degree: "Master's Degree in Computer Science",
     institution: "University Name",
     period: "2022 - 2024",
+    cgpa: "3.8/4.0",
     description: "Advanced studies in software engineering, algorithms, and system design with focus on modern development practices.",
     subjects: ["Advanced Algorithms", "Software Architecture", "Machine Learning", "Database Systems", "Distributed Systems"]
   },
@@ -22,12 +24,13 @@ const education: EducationProps[] = [
     degree: "Bachelor's Degree in Computer Science",
     institution: "University Name",
     period: "2018 - 2022",
+    cgpa: "3.7/4.0",
     description: "Comprehensive foundation in computer science fundamentals, programming, and software development methodologies.",
     subjects: ["Data Structures", "Object-Oriented Programming", "Web Development", "Computer Networks", "Software Engineering"]
   }
 ];
 
-const EducationCard = ({ degree, institution, period, description, subjects }: EducationProps) => {
+const EducationCard = ({ degree, institution, period, cgpa, description, subjects }: EducationProps) => {
   return (
     <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <CardHeader>
@@ -40,6 +43,9 @@ const EducationCard = ({ degree, institution, period, description, subjects }: E
             <CardDescription className="text-sm font-medium text-primary">
               {institution} • {period}
             </CardDescription>
+            <div className="text-sm font-medium text-foreground mt-1">
+              CGPA: {cgpa}
+            </div>
           </div>
         </div>
       </CardHeader>
