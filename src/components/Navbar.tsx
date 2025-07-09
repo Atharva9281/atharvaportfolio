@@ -54,13 +54,10 @@ const Navbar = () => {
           }}
           aria-label="Atharva Kamble"
         >
-          <div className="relative">
-            <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-pulse-500 to-pulse-600 rounded-xl shadow-lg">
-              <span className="text-white font-bold text-lg sm:text-xl tracking-tight">
-                AK
-              </span>
-            </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-pulse-300 rounded-full animate-pulse"></div>
+          <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10">
+            <span className="text-gray-900 font-bold text-xl sm:text-2xl tracking-tight">
+              AK
+            </span>
           </div>
         </a>
 
