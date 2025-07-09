@@ -52,13 +52,16 @@ const Navbar = () => {
             e.preventDefault();
             scrollToTop();
           }}
-          aria-label="Pulse Robot"
+          aria-label="Atharva Kamble"
         >
-          <img 
-            src="/logo.svg" 
-            alt="Pulse Robot Logo" 
-            className="h-7 sm:h-8" 
-          />
+          <div className="relative">
+            <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-pulse-500 to-pulse-600 rounded-xl shadow-lg">
+              <span className="text-white font-bold text-lg sm:text-xl tracking-tight">
+                AK
+              </span>
+            </div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-pulse-300 rounded-full animate-pulse"></div>
+          </div>
         </a>
 
         {/* Desktop Navigation */}
