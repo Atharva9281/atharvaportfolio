@@ -55,8 +55,8 @@ const Navbar = () => {
           aria-label="Atharva Kamble"
         >
           <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10">
-            <span className="text-gray-900 font-bold text-xl sm:text-2xl tracking-tight">
-              AK
+            <span className="text-gray-900 font-mono font-bold text-lg sm:text-xl tracking-tight">
+              &lt;AK/&gt;
             </span>
           </div>
         </a>
